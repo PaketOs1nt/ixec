@@ -37,7 +37,12 @@ class Instr:
 
     @staticmethod
     def from_asm(data: str):
-        
+        op, arg = data.split(" ", maxsplit=2)
+        arg = arg.strip()
+        if arg.isdigit():
+            arg = int(arg)
+
+        return Instr.load(op, arg)
 
 
 @dataclass
